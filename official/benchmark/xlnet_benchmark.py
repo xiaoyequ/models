@@ -31,7 +31,7 @@ import tensorflow as tf
 from official.benchmark import bert_benchmark_utils as benchmark_utils
 from official.nlp.xlnet import run_classifier
 from official.nlp.xlnet import run_squad
-
+from official.nlp.xlnet import squad_utils
 # pylint: disable=line-too-long
 PRETRAINED_CHECKPOINT_PATH = 'gs://cloud-tpu-checkpoints/xlnet/large/xlnet_model-1'
 CLASSIFIER_TRAIN_DATA_PATH = 'gs://tf-perfzero-data/xlnet/imdb/spiece.model.len-512.train.tf_record'
