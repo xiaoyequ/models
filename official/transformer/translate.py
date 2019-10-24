@@ -17,6 +17,7 @@
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
+from tensorflow.compat.v1.train import ProfilerHook
 
 import os
 
@@ -117,7 +118,9 @@ def translate_file(
     return ds
 
   translations = []
-  for i, prediction in enumerate(estimator.predict(input_fn)):
+
+  for i, prediction in enumerate(estimator.predict(input_fn, hooks=[ProfilerHook(
+    save_steps=1, output_dir='/localdisk/cuixiaom/Output/transformer')])):
     translation = _trim_and_decode(prediction["outputs"], subtokenizer)
     translations.append(translation)
 
@@ -145,7 +148,9 @@ def translate_text(estimator, subtokenizer, txt):
     ds = ds.batch(_DECODE_BATCH_SIZE)
     return ds
 
-  predictions = estimator.predict(input_fn)
+  predictions = estimator.predict(input_fn,
+    hooks=[ProfilerHook(save_steps=1,
+    output_dir='/localdisk/cuixiaom/Output/transformer')])
   translation = next(predictions)["outputs"]
   translation = _trim_and_decode(translation, subtokenizer)
   tf.logging.info("Translation of \"%s\": \"%s\"" % (txt, translation))
