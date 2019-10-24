@@ -17,6 +17,6 @@ VOCAB_FILE=$DATA_DIR/vocab.ende.32768
 cd $TRANFORMERV1DIR
 
 # Train the model for 10 epochs, and evaluate after every epoch.
-python3 transformer_main.py --data_dir=$DATA_DIR --model_dir=$MODEL_DIR --param_set=$PARAM_SET 
+python3 transformer_main.py --data_dir=$DATA_DIR --model_dir=$MODEL_DIR --param_set=$PARAM_SET \
     --vocab_file=$VOCAB_FILE \
     --bleu_source=$DATA_DIR/newstest2014.en --bleu_ref=$DATA_DIR/newstest2014.de
