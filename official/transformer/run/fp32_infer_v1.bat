@@ -1,6 +1,7 @@
 # Ensure that PYTHONPATH is correctly defined as described in
 # https://github.com/tensorflow/models/tree/master/official#requirements
 # works for TensorFlow r1.15
+# PYTHONPATH=/nfs/pdx/home/cuixiaom/TensorFlow/py3mklr1.15/
 
 # Export variables
 PARAM_SET=big
@@ -23,6 +24,6 @@ python3 translate.py --model_dir=$MODEL_DIR --vocab_file=$VOCAB_FILE \
     --param_set=$PARAM_SET --text="hello world"
 
 # Compute model's BLEU score using the newstest2014 dataset.
-python3 translate.py --model_dir=$MODEL_DIR --vocab_file=$VOCAB_FILE \
-    --param_set=$PARAM_SET --file=$DATA_DIR/newstest2014.en --file_out=$OUTPUT_DIR/translation.en
-python3 compute_bleu.py --translation=$OUTPUT_DIR/translation.en --reference=$DATA_DIR/newstest2014.de
+#python3 translate.py --model_dir=$MODEL_DIR --vocab_file=$VOCAB_FILE \
+#    --param_set=$PARAM_SET --file=$DATA_DIR/newstest2014_quick.en --file_out=$OUTPUT_DIR/translation.en
+#python3 compute_bleu.py --translation=$OUTPUT_DIR/translation.en --reference=$DATA_DIR/newstest2014_quick.de
